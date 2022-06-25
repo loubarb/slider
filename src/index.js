@@ -39,6 +39,14 @@ function Slider(slider) {
 
   previousButton.addEventListener('click', () => move('back'))
   nextButton.addEventListener('click', () => move('forward'))
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      move('forward')
+    } else if (e.key === 'ArrowLeft') {
+      move('back')
+    }
+  })
+
 }
 
 const mySlider = Slider(document.querySelector('.slider'))
