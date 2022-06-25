@@ -3,8 +3,8 @@ function Slider(slider) {
   let prev;
   let next;
   const slides = slider.querySelector('.slides')
-  const previousButton = document.querySelector('.goToPrev')
-  const nextButton = document.querySelector('.goToNext')
+  const previousButton = slider.querySelector('.goToPrev')
+  const nextButton = slider.querySelector('.goToNext')
   
 
   function startSlider() {
@@ -26,9 +26,9 @@ function Slider(slider) {
     next.classList.remove(...classesToRemove)
 
     if (direction === 'back') {
-      [prev, current, next] = [prev.previousElementSibling, prev, current]
+      [prev, current, next] = [prev.previousElementSibling || slides.lastElementChild, prev, current]
     } else {
-      [prev, current, next] = [current, next, next.nextElementSibling]
+      [prev, current, next] = [current, next, next.nextElementSibling || slides.firstElementChild]
     }
     applyClasses()
   }
